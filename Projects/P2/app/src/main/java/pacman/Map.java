@@ -52,12 +52,8 @@ public class Map {
     return gameOver;
   }
 
-  public HashMap<Location, HashSet<Type>> getfield(){
+  public HashMap<Location, HashSet<Type>> getField(){
     return field;
-  }
-
-  public int getDim(){
-    return dim;
   }
 
   public boolean move(String name, Location loc, Type type) {

@@ -32,7 +32,7 @@ public class PacMan {
   }
 
   private boolean isValidMove(Location loc){
-    if (loc.x < 0 || loc.x > myMap.getDim() || loc.y < 0 || loc.y > myMap.getDim() || myMap.getfield().get(loc).contains(Type.WALL) ) {
+    if (loc.x < 0 || loc.x > 23 || loc.y < 0 || loc.y > 24|| myMap.getField().get(loc).contains(Type.WALL) ) {
       return false;
     } else {
       return true;
