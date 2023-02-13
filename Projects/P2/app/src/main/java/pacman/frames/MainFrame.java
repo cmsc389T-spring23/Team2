@@ -26,7 +26,7 @@ public class MainFrame extends JFrame implements ActionListener {
   private String[] names = {"Blinky", "Inky", "Pinky", "Clyde"};
   private JLabel scoreboard;
   private JButton close;
-  public Map myMap;
+  private Map myMap;
   public int scale = 20;
   public int dim = 30;
   private int score = 0;
