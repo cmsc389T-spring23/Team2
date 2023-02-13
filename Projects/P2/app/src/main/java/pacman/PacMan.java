@@ -29,7 +29,7 @@ public class PacMan {
     Location checLocation2 = myLoc.shift(0,-1);
     Location checLocation3 = myLoc.shift(1, 0);
     Location checLocation4 = myLoc.shift(-1, 0);
-    if (getLoc(possLocation1).contains(GHOST)||getLoc(possLocation2).contains(GHOST) || getLoc(possLocation3).contains(GHOST) || getLoc(possLocation4).contains(GHOST)){
+    if (getLoc(checLocation1).contains(GHOST)||getLoc(checLocation2).contains(GHOST) || getLoc(checLocation3).contains(GHOST) || getLoc(checLocation4).contains(GHOST)){
       return true;
     }
     return false;
