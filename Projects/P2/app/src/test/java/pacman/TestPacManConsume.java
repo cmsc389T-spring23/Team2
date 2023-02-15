@@ -15,5 +15,6 @@ public class TestPacManConsume extends TestCase {
     PacMan pacman = frame.addPacMan(new Location(9, 12)); //Creates PacMan at location x, y
 
     assertEquals(pacman.consume(), null);
+    return;
   }
 }
