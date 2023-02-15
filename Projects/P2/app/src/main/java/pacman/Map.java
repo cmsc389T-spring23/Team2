@@ -64,8 +64,13 @@ public class Map {
   }
 
   public boolean attack(String Name) {
-    // update gameOver
-    return false;
+    if Name.is_pacman_in_range() = true{
+      gameOver = true;
+      return true;
+    } else{
+      gameOver = false;
+      return false;
+    }
   }
 
   public JComponent eatCookie(String name) {
