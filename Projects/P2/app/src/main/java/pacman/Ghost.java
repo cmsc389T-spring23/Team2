@@ -1,6 +1,7 @@
 package pacman;
 import java.util.ArrayList;
 import java.util.HashSet;
+import pacman.Map.Type;
 
 public class Ghost {
   String myName;
