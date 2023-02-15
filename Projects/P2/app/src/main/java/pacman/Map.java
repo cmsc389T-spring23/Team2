@@ -69,8 +69,19 @@ public class Map {
   }
 
   public JComponent eatCookie(String name) {
+    Location loc = locations.get(name);
+    if(field.get(loc).contains(Type.COOKIE)){
+      String cookie_id = "tok_x" + loc.x + "_y" + loc.y;
+      JComponent cookie_comp = components.get(cookie_id);
+      locations.remove(cookie_id);
+      components.remove(cookie_id);
+      field.get(loc).remove(Type.COOKIE);
+      cookies++;
+      return cookie_comp;
+    } else {
+      return null;
+    }
     // update locations, components, field, and cookies
     // the id for a cookie at (10, 1) is tok_x10_y1
-    return null;
   }
 }
