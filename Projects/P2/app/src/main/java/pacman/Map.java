@@ -64,7 +64,7 @@ public class Map {
   }
 
   public boolean attack(String Name) {
-    Location loc = locations.get(name);
+    Location loc = locations.get(Name);
     Location checLocation1 = loc.shift(0,1);
     Location checLocation2 = loc.shift(0,-1);
     Location checLocation3 = loc.shift(1, 0);
@@ -73,9 +73,9 @@ public class Map {
       gameOver = true;
       return true;
     }else{
+      gameOver = false;
       return false;
     }
-    return false;
   }
 
   public JComponent eatCookie(String name) {
