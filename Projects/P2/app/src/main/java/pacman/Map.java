@@ -64,13 +64,18 @@ public class Map {
   }
 
   public boolean attack(String Name) {
-    if Name.is_pacman_in_range() = true{
+    Location loc = locations.get(name);
+    Location checLocation1 = loc.shift(0,1);
+    Location checLocation2 = loc.shift(0,-1);
+    Location checLocation3 = loc.shift(1, 0);
+    Location checLocation4 = loc.shift(-1, 0);
+    if(field.get(checLocation1).contains(Type.PACMAN) || field.get(checLocation2).contains(Type.PACMAN) || field.get(checLocation3).contains(Type.PACMAN) || field.get(checLocation4).contains(Type.PACMAN)){
       gameOver = true;
       return true;
-    } else{
-      gameOver = false;
+    }else{
       return false;
     }
+    return false;
   }
 
   public JComponent eatCookie(String name) {
