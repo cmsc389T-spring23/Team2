@@ -1,4 +1,5 @@
 package pacman;
+
 import java.util.HashMap;
 import java.util.HashSet;
 import javax.swing.JComponent;
@@ -40,7 +41,8 @@ public class Map {
   public void add(String name, Location loc, JComponent comp, Type type) {
     locations.put(name, loc);
     components.put(name, comp);
-    if (!field.containsKey(loc)) field.put(loc, new HashSet<Type>());
+    if (!field.containsKey(loc))
+      field.put(loc, new HashSet<Type>());
     field.get(loc).add(type);
   }
 
@@ -59,8 +61,16 @@ public class Map {
   }
 
   public HashSet<Type> getLoc(Location loc) {
-    // wallSet and emptySet will help you write this method
-    return null;
+    HashSet<Type> types = field.get(loc);
+    if (types == null) {
+      if (loc.y == 0 || loc.y == dim - 1 || loc.x == 0 || loc.x == dim - 1) {
+        types = new HashSet<>(wallSet);
+      } else {
+        types = new HashSet<>(emptySet);
+      }
+    }
+
+    return types;
   }
 
   public boolean attack(String Name) {
