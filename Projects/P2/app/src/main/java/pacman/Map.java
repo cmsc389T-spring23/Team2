@@ -1,4 +1,5 @@
 package pacman;
+
 import java.util.HashMap;
 import java.util.HashSet;
 import javax.swing.JComponent;
@@ -40,7 +41,8 @@ public class Map {
   public void add(String name, Location loc, JComponent comp, Type type) {
     locations.put(name, loc);
     components.put(name, comp);
-    if (!field.containsKey(loc)) field.put(loc, new HashSet<Type>());
+    if (!field.containsKey(loc))
+      field.put(loc, new HashSet<Type>());
     field.get(loc).add(type);
   }
 
@@ -80,13 +82,34 @@ public class Map {
     return true;
   }
 
+  // getLoc() returns a HashSet of the types at the given location.
   public HashSet<Type> getLoc(Location loc) {
-    // wallSet and emptySet will help you write this method
-    return null;
+    HashSet<Type> types = field.get(loc);
+    if (types == null) {
+      if (loc.y == 0 || loc.y == dim - 1 || loc.x == 0 || loc.x == dim - 1) {
+        types = new HashSet<>(wallSet);
+      } else {
+        types = new HashSet<>(emptySet);
+      }
+    }
+
+    return types;
+
   }
 
   public boolean attack(String Name) {
     Location loc = locations.get(Name);
+
+    Location checLocation1 = loc.shift(0, 1);
+    Location checLocation2 = loc.shift(0, -1);
+    Location checLocation3 = loc.shift(1, 0);
+    Location checLocation4 = loc.shift(-1, 0);
+    if (field.get(checLocation1).contains(Type.PACMAN) || field.get(checLocation2).contains(Type.PACMAN)
+        || field.get(checLocation3).contains(Type.PACMAN) || field.get(checLocation4).contains(Type.PACMAN)) {
+      gameOver = true;
+      return true;
+    } else {
+=======
     Location checLocation1 = loc.shift(0,1);
     Location checLocation2 = loc.shift(0,-1);
     Location checLocation3 = loc.shift(1, 0);
@@ -95,6 +118,7 @@ public class Map {
       gameOver = true;
       return true;
     }else{
+
       gameOver = false;
       return false;
     }
