@@ -26,4 +26,8 @@ This function creates 4 different possible locations that the named ghost can at
 
 When it comes to testing I created a test where true would be returned and one where false would be returned based on the conditions set up by the test. Both passed.
 
+### `pacman-move() -> boolean`
 
+- Returns true if the move was successful and false otherwise. The move is successful if the location is valid and not occupied by a wall. If the move is successful, the PacMan's location should be updated to the new location. If the move is not successful, the PacMan's location should not be updated. The PacMan should not be able to move through walls. The PacMan should not be able to move off the map. The PacMan should not be able to move to a location that is already occupied by another PacMan. The PacMan should not be able to move to a location that is already occupied by a Ghost
+
+- Testing: Test that the PacMan moves in the correct direction, and does not move if there is a wall in the way. We use assertEquals to check that the PacMan's location is correct after the move. We also use assertEquals to check that the PacMan's location is not changed if the move is not successful
