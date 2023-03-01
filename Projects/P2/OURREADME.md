@@ -1,18 +1,5 @@
 # Project 1: PacMan, by Team 2
 
-
-title in progress?
-
-# Team members:
-Michael Tang, Wyatt Scott, Jason Devers
-
-# Image of Code Playing Pacman
-
-# A section on how to run the code from the command line
-# Code block for command to compile and run the game
-
-# Functions:
-
 ## Team members
 Michael Tang, Wyatt Scott, Jason Devers, Tyler Pettway
 
