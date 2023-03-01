@@ -1,15 +1,17 @@
 # Project 1: PacMan, by Team 2
-title in progress?
 
-# Team members:
-Michael Tang, Wyatt Scott
+## Team members
+Michael Tang, Wyatt Scott, Jason Devers, Tyler Pettway
 
-# Image of Code Playing Pacman
+## An image of the code playing pacman
+## Section on how to run the code from the command line
+## Code block for command to compile and run the game
+## Functions:
+Map - eatCookie(String name)
+The goal of this method is to update the map by having the pacman eat a cookie if it's able to. The method starts by determining the location of the pacman by using pacman's name provided in the method's name parameter. If pacman's location overlaps with an available cookie, the method will retrieve the cookie's id and remove the cookie from the following variables: locations, components, and field. Afterwards,  the cookie counter is incremented and the JComponent associated with the cookie id is returned. However, if pacman's location doesn't overlap with a cookie, the method returns null and the variables remain the same.
 
-# A section on how to run the code from the command line
-# Code block for command to compile and run the game
+The test function creates a pacman and puts it in location (1,1), which overlaps with a cookie. After the eatCookie method is called, the test checks to see if the cookie counter increased. In this case, the cookie counter should be equal to 1. 
 
-# Functions:
 
 pacman - get_valid_moves()
 Returns an ArrayList of locations that pacman can legally move to.
@@ -35,3 +37,4 @@ and add the type to the new location in field.
 The test for this spawns a pacman at 1,1 and moves it to the right where it can be moved since 1,2 is an empty space.
 Then it checks that the old location in field does not contain a Type.PACMAN, the new location does, and that pacman's location in the locations HashMap is set correctly.
 Finally it checks that a ghost at 1,1 cannot move to 0,1 as 0,1 is a wall.
+
