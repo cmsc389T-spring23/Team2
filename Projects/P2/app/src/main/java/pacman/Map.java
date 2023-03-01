@@ -4,8 +4,6 @@ import java.util.HashMap;
 import java.util.HashSet;
 import javax.swing.JComponent;
 
-import com.sun.jdi.Location;
-
 public class Map {
 
   public enum Type {
@@ -62,6 +60,7 @@ public class Map {
     return false;
   }
 
+  // getLoc() returns a HashSet of the types at the given location.
   public HashSet<Type> getLoc(Location loc) {
     HashSet<Type> types = field.get(loc);
     if (types == null) {
@@ -73,11 +72,23 @@ public class Map {
     }
 
     return types;
+
   }
 
   public boolean attack(String Name) {
-    // update gameOver
-    return false;
+    Location loc = locations.get(Name);
+    Location checLocation1 = loc.shift(0, 1);
+    Location checLocation2 = loc.shift(0, -1);
+    Location checLocation3 = loc.shift(1, 0);
+    Location checLocation4 = loc.shift(-1, 0);
+    if (field.get(checLocation1).contains(Type.PACMAN) || field.get(checLocation2).contains(Type.PACMAN)
+        || field.get(checLocation3).contains(Type.PACMAN) || field.get(checLocation4).contains(Type.PACMAN)) {
+      gameOver = true;
+      return true;
+    } else {
+      gameOver = false;
+      return false;
+    }
   }
 
   public JComponent eatCookie(String name) {
