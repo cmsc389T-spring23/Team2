@@ -2,6 +2,7 @@ package pacman;
 
 import java.util.ArrayList;
 import java.util.HashSet;
+import pacman.Map.Type;
 
 public class Ghost {
   String myName;
@@ -18,15 +19,6 @@ public class Ghost {
     return null;
   }
 
-  /*
-   * Description: This function uses the get_valid_moves function to find the
-   * possible locations that a ghost can move to from its current location and
-   * chooses to move in one of those directions. You are free to apply an
-   * algorithm here if you would like, but the only requirement is that you move
-   * in a valid direction. To move successfully, make sure to call the map move
-   * function and update the ghost's location. If the ghost is able to move, this
-   * function returns true otherwise it returns false.
-   */
   public boolean move() {
     ArrayList<Location> validMoves = get_valid_moves();
     if (validMoves.size() == 0) {
@@ -57,10 +49,23 @@ public class Ghost {
   } // end of move()
 
   public boolean is_pacman_in_range() {
-    return false;
+    boolean result = false;
+    Location checLocation1 = myLoc.shift(0,1);
+    Location checLocation2 = myLoc.shift(0,-1);
+    Location checLocation3 = myLoc.shift(1, 0);
+    Location checLocation4 = myLoc.shift(-1, 0);
+    if (myMap.getLoc(checLocation1).contains(Map.Type.PACMAN) || myMap.getLoc(checLocation2).contains(Map.Type.PACMAN) || myMap.getLoc(checLocation3).contains(Map.Type.PACMAN) || myMap.getLoc(checLocation4).contains(Map.Type.PACMAN)){
+      result = true;
+    }
+
+    return result;
   }
 
   public boolean attack() {
-    return false;
+    if (is_pacman_in_range()) {
+      return this.myMap.attack(this.myName);
+    } else {
+      return false;
+    }
   }
 }
