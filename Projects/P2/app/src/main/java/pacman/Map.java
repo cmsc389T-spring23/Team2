@@ -53,11 +53,33 @@ public class Map {
   public boolean isGameOver() {
     return gameOver;
   }
+  
+  public HashMap<Location, HashSet<Type>> getField(){
+    return field;
+  }
+
+  public HashMap<String, Location> getLocations(){
+    return locations;
+  }
 
   public boolean move(String name, Location loc, Type type) {
     // update locations, components, and field
     // use the setLocation method for the component to move it to the new location
-    return false;
+    if (field.get(loc).contains(Type.WALL)) {
+      return false;
+    }
+    // Get the comp and old location
+    JComponent comp = components.get(name);
+    Location oldLoc = locations.get(name);
+
+    // Update locations, components, and the component's location
+    locations.put(name, loc);
+    comp.setLocation(loc.x, loc.y);
+
+    // Update field
+    field.get(oldLoc).remove(type);
+    field.get(loc).add(type);
+    return true;
   }
 
   // getLoc() returns a HashSet of the types at the given location.
@@ -77,6 +99,7 @@ public class Map {
 
   public boolean attack(String Name) {
     Location loc = locations.get(Name);
+
     Location checLocation1 = loc.shift(0, 1);
     Location checLocation2 = loc.shift(0, -1);
     Location checLocation3 = loc.shift(1, 0);
@@ -86,6 +109,16 @@ public class Map {
       gameOver = true;
       return true;
     } else {
+=======
+    Location checLocation1 = loc.shift(0,1);
+    Location checLocation2 = loc.shift(0,-1);
+    Location checLocation3 = loc.shift(1, 0);
+    Location checLocation4 = loc.shift(-1, 0);
+    if(field.get(checLocation1).contains(Type.PACMAN) || field.get(checLocation2).contains(Type.PACMAN) || field.get(checLocation3).contains(Type.PACMAN) || field.get(checLocation4).contains(Type.PACMAN)){
+      gameOver = true;
+      return true;
+    }else{
+
       gameOver = false;
       return false;
     }
