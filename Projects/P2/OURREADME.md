@@ -25,3 +25,13 @@ Returns true if the attack was successful and false if not.
 This function creates 4 different possible locations that the named ghost can attack, (the four cardinal directions), and checks if the locations contain a pacman. If so the gameOver variable is updated to true and true is returned. If not the gameOver variable is set to its default value of false and false is returned.
 
 When it comes to testing I created a test where true would be returned and one where false would be returned based on the conditions set up by the test. Both passed.
+map-move()
+This function checks if the new location is wall, and if it is, whatever was passed into to method (a ghost or pacman,) cannot move there,
+so the method returns false.
+Else, the ghost or pacman can move there, so I get the old location, and a reference to the JComonent of the ghost/pacman we want.
+Then I update the location in the locations HashMap, update the JComponent's location, and finally delete the type from the old location and field,
+and add the type to the new location in field.
+
+The test for this spawns a pacman at 1,1 and moves it to the right where it can be moved since 1,2 is an empty space.
+Then it checks that the old location in field does not contain a Type.PACMAN, the new location does, and that pacman's location in the locations HashMap is set correctly.
+Finally it checks that a ghost at 1,1 cannot move to 0,1 as 0,1 is a wall.
