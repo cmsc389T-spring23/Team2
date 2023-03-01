@@ -24,3 +24,4 @@ Returns a boolean variable result.
 This function creates 4 different possible locations the ghost can move, (the four cardinal directions), and checks if the locations contain a Pacman. If so this means a pacman is in range and thus the result variable is set to true. If not the result variable is left as false and is returned.
 
 To test this I created a test where one set of conditions would return true and the other would return false. Both pass but getLoc was required to test this. 
+
