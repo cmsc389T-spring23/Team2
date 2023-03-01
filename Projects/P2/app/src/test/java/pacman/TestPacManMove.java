@@ -6,6 +6,8 @@ import java.awt.Color;
 public class TestPacManMove extends TestCase {
 
   public void testPacManMove() throws FileNotFoundException {
+    MainFrame frame = new MainFrame(); //Creates A New Map With Walls and Tokens Initialized
+    
     PacMan pacman = new PacMan("pacman", new Location(1, 1), new Map("map1.txt"));
     pacman.move();
     assertEquals(pacman.getLoc().x, 1);
