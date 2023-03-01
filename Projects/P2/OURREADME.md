@@ -25,3 +25,8 @@ Returns a boolean variable result.
 This function creates 4 different possible locations the ghost can move, (the four cardinal directions), and checks if the locations contain a Pacman. If so this means a pacman is in range and thus the result variable is set to true. If not the result variable is left as false and is returned.
 
 To test this I created a test where one set of conditions would return true and the other would return false. Both pass but getLoc was required to test this. 
+
+### `ghost - move() -> boolean`
+- Implementation: This function uses the get_valid_moves function to find the possible locations that a ghost can move to from its current location and chooses to move in one of those directions. You are free to apply an algorithm here if you would like, but the only requirement is that you move in a valid direction. To move successfully, make sure to call the map move function and update the ghost's location. If the ghost is able to move, this function returns true otherwise it returns false.
+- Testing: We test if it moves to valid and invalid locations, returning true if it was valid, returning false if it wasn't.
+
