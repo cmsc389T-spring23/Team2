@@ -1,4 +1,5 @@
 # Project 1: PacMan, by Team 2
+
 title in progress?
 
 # Team members:
@@ -10,6 +11,20 @@ Michael Tang, Wyatt Scott
 # Code block for command to compile and run the game
 
 # Functions:
+=======
+
+## Team members
+Michael Tang, Wyatt Scott, Jason Devers, Tyler Pettway
+
+## An image of the code playing pacman
+## Section on how to run the code from the command line
+## Code block for command to compile and run the game
+## Functions:
+Pacman - consume()
+This method has pacman eating a cookie if there's one in its location. If pacman overlaps with a cookie, the method will call eatCookie from the map class and return the JComponent of the eaten cookie. Otherwise, the method returns null without updating anything.
+
+The test function puts pacman in location (1,1), where a cookie will be present. After consume() is called, the cookie counter should be increased to 1.
+
 
 pacman - get_valid_moves()
 Returns an ArrayList of locations that pacman can legally move to.
@@ -19,6 +34,7 @@ The test for this method creates 3 pacmen in 3 different positions, and tests th
 The first test verifies that moves out of bounds on the top are invalid, moves into walls are valid, and moves into ghosts are valid. 
 The second test tests that moves out of bounds on the right and bottom are invalid and moves into walls are invalid.
 The last test verifies that the function returns the correct possible moves when there are multiple valid moves.
+
 
 map-attack()
 Returns true if the attack was successful and false if not.
@@ -31,3 +47,10 @@ When it comes to testing I created a test where true would be returned and one w
 - Returns true if the move was successful and false otherwise. The move is successful if the location is valid and not occupied by a wall. If the move is successful, the PacMan's location should be updated to the new location. If the move is not successful, the PacMan's location should not be updated. The PacMan should not be able to move through walls. The PacMan should not be able to move off the map. The PacMan should not be able to move to a location that is already occupied by another PacMan. The PacMan should not be able to move to a location that is already occupied by a Ghost
 
 - Testing: Test that the PacMan moves in the correct direction, and does not move if there is a wall in the way. We use assertEquals to check that the PacMan's location is correct after the move. We also use assertEquals to check that the PacMan's location is not changed if the move is not successful
+=======
+pacman- is_ghost_in_range()
+Returns a boolean result variable.
+This function creates 4 different possible locations a ghost can be around a given pacman, (the four cardinal directions), and checks if the locations the locations containn a ghost. If so the result variable is set to true and the returned, else it remains false and is returned as such.
+
+To test this I created two senarios: one that would return true and one that would return false. Both passed but required getLoc to work.
+
