@@ -13,17 +13,6 @@ Michael Tang, Wyatt Scott, Jason Devers, Tyler Pettway
 
  - Testing: The test function creates a pacman and puts it in location (1,1), which overlaps with a cookie. After the eatCookie method is called, the test checks to see if the cookie counter increased. In this case, the cookie counter should be equal to 1. 
 
-
-
-### `Pacman-get_valid_moves() -> ArrayList`
- - Implementation: Returns an ArrayList of locations that pacman can legally move to.
-This function creates 4 different possible locations pacman can move, (the four cardinal directions), and checks if the locations on the map are walls or out of bounds. If the location is a wall or out of bounds, the location is not added to the resulting arrayList, otherwise, it is.
-
- - Testing: The test for this method creates 3 pacmen in 3 different positions, and tests that the method returns the correct valid moves. 
-The first test verifies that moves out of bounds on the top are invalid, moves into walls are valid, and moves into ghosts are valid. 
-The second test tests that moves out of bounds on the right and bottom are invalid and moves into walls are invalid.
-The last test verifies that the function returns the correct possible moves when there are multiple valid moves.
-
 ### `Map-attack() -> Boolean`
  - Implementation: Returns true if the attack was successful and false if not.
 This function creates 4 different possible locations that the named ghost can attack, (the four cardinal directions), and checks if the locations contain a pacman. If so the gameOver variable is updated to true and true is returned. If not the gameOver variable is set to its default value of false and false is returned.
@@ -46,6 +35,38 @@ Finally it checks that a ghost at 1,1 cannot move to 0,1 as 0,1 is a wall.
 
 - Implementation: `getLoc()` returns a HashSet of the types at the given location. If the location is on the edge of the map, return a HashSet containing only Type.WALL. If the location is not on the edge of the map, return a HashSet containing only Type.EMPTY. If the location is not on the edge of the map and contains a cookie, return a HashSet containing Type.EMPTY and Type.COOKIE.
 - Testing: Given 4 different locations, we test if the location is able to determine what the location is. We also test it with `WALL` types. 
+
+
+
+### `Pacman-get_valid_moves() -> ArrayList`
+ - Implementation: Returns an ArrayList of locations that pacman can legally move to.
+This function creates 4 different possible locations pacman can move, (the four cardinal directions), and checks if the locations on the map are walls or out of bounds. If the location is a wall or out of bounds, the location is not added to the resulting arrayList, otherwise, it is.
+
+ - Testing: The test for this method creates 3 pacmen in 3 different positions, and tests that the method returns the correct valid moves. 
+The first test verifies that moves out of bounds on the top are invalid, moves into walls are valid, and moves into ghosts are valid. 
+The second test tests that moves out of bounds on the right and bottom are invalid and moves into walls are invalid.
+The last test verifies that the function returns the correct possible moves when there are multiple valid moves.
+
+### `Pacman-consume() -> JComponent`
+ - Implementation: This method has pacman eating a cookie if there's one in its location. If pacman overlaps with a cookie, the method will call eatCookie from the map class and return the JComponent of the eaten cookie. Otherwise, the method returns null without updating anything.
+
+ - Testing: The test function puts pacman in location (1,1), where a cookie will be present. After consume() is called, the cookie counter should be increased to 1.
+
+### `Pacman-move() -> Boolean`
+
+- Implementation: Returns true if the move was successful and false otherwise. The move is successful if the location is valid and not occupied by a wall. If the move is successful, the PacMan's location should be updated to the new location. If the move is not successful, the PacMan's location should not be updated. The PacMan should not be able to move through walls. The PacMan should not be able to move off the map. The PacMan should not be able to move to a location that is already occupied by another PacMan. The PacMan should not be able to move to a location that is already occupied by a Ghost
+
+- Testing: Test that the PacMan moves in the correct direction, and does not move if there is a wall in the way. We use assertEquals to check that the PacMan's location is correct after the move. We also use assertEquals to check that the PacMan's location is not changed if the move is not successful
+
+### `Pacman-is_ghost_in_range() -> Boolean`
+ - Implementation: Returns a boolean result variable.
+This function creates 4 different possible locations a ghost can be around a given pacman, (the four cardinal directions), and checks if the locations the locations containn a ghost. If so the result variable is set to true and the returned, else it remains false and is returned as such.
+
+ - Testing: To test this I created two senarios: one that would return true and one that would return false. Both passed but required getLoc to work.
+
+
+
+
 
 ### `Ghost-attack() -> Boolean`
  - Implementation: This method allows the ghost to attack pacman if it's in range. It starts by calling the is_pacman_in_range method and if it returns true, the method returns a call to Map's attack method, which itself will return true if the attack was successful. Otherwise, the method returns false.
