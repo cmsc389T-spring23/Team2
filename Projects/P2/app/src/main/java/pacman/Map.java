@@ -1,4 +1,5 @@
 package pacman;
+
 import java.util.HashMap;
 import java.util.HashSet;
 import javax.swing.JComponent;
@@ -40,7 +41,8 @@ public class Map {
   public void add(String name, Location loc, JComponent comp, Type type) {
     locations.put(name, loc);
     components.put(name, comp);
-    if (!field.containsKey(loc)) field.put(loc, new HashSet<Type>());
+    if (!field.containsKey(loc))
+      field.put(loc, new HashSet<Type>());
     field.get(loc).add(type);
   }
 
@@ -51,26 +53,91 @@ public class Map {
   public boolean isGameOver() {
     return gameOver;
   }
+  
+  public HashMap<Location, HashSet<Type>> getField(){
+    return field;
+  }
+
+  public HashMap<String, Location> getLocations(){
+    return locations;
+  }
 
   public boolean move(String name, Location loc, Type type) {
     // update locations, components, and field
     // use the setLocation method for the component to move it to the new location
-    return false;
+    if (field.get(loc).contains(Type.WALL)) {
+      return false;
+    }
+    // Get the comp and old location
+    JComponent comp = components.get(name);
+    Location oldLoc = locations.get(name);
+
+    // Update locations, components, and the component's location
+    locations.put(name, loc);
+    comp.setLocation(loc.x, loc.y);
+
+    // Update field
+    field.get(oldLoc).remove(type);
+    field.get(loc).add(type);
+    return true;
   }
 
+  // getLoc() returns a HashSet of the types at the given location.
   public HashSet<Type> getLoc(Location loc) {
-    // wallSet and emptySet will help you write this method
-    return null;
+    HashSet<Type> types = field.get(loc);
+    if (types == null) {
+      if (loc.y == 0 || loc.y == dim - 1 || loc.x == 0 || loc.x == dim - 1) {
+        types = new HashSet<>(wallSet);
+      } else {
+        types = new HashSet<>(emptySet);
+      }
+    }
+
+    return types;
+
   }
 
   public boolean attack(String Name) {
-    // update gameOver
-    return false;
+    Location loc = locations.get(Name);
+
+    Location checLocation1 = loc.shift(0, 1);
+    Location checLocation2 = loc.shift(0, -1);
+    Location checLocation3 = loc.shift(1, 0);
+    Location checLocation4 = loc.shift(-1, 0);
+    if (field.get(checLocation1).contains(Type.PACMAN) || field.get(checLocation2).contains(Type.PACMAN)
+        || field.get(checLocation3).contains(Type.PACMAN) || field.get(checLocation4).contains(Type.PACMAN)) {
+      gameOver = true;
+      return true;
+    } else {
+=======
+    Location checLocation1 = loc.shift(0,1);
+    Location checLocation2 = loc.shift(0,-1);
+    Location checLocation3 = loc.shift(1, 0);
+    Location checLocation4 = loc.shift(-1, 0);
+    if(field.get(checLocation1).contains(Type.PACMAN) || field.get(checLocation2).contains(Type.PACMAN) || field.get(checLocation3).contains(Type.PACMAN) || field.get(checLocation4).contains(Type.PACMAN)){
+      gameOver = true;
+      return true;
+    }else{
+
+      gameOver = false;
+      return false;
+    }
   }
 
   public JComponent eatCookie(String name) {
+    Location loc = locations.get(name);
+    if(field.get(loc).contains(Type.COOKIE)){
+      String cookie_id = "tok_x" + loc.x + "_y" + loc.y;
+      JComponent cookie_comp = components.get(cookie_id);
+      locations.remove(cookie_id);
+      components.remove(cookie_id);
+      field.get(loc).remove(Type.COOKIE);
+      cookies++;
+      return cookie_comp;
+    } else {
+      return null;
+    }
     // update locations, components, field, and cookies
     // the id for a cookie at (10, 1) is tok_x10_y1
-    return null;
   }
 }
