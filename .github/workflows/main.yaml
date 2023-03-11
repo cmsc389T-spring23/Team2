@@ -18,3 +18,7 @@ jobs:
         run: 
           cd Projects/P2
           gradlew build testClasses -x test
+          gradlew test --parallel --tests TestGhostValidMoves
+          gradlew test --parallel --tests TestMapMove
+          gradlew test --parallel --tests TestPacManValidMoves
+
