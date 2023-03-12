@@ -6,26 +6,36 @@ on: [push, pull_request, workflow_dispatch]
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   build:
-    # The type of runner that the job will run on
     runs-on: ubuntu-latest
     container: openjdk:13
     steps:
-      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
-      # Runs a set of commands using the runners shell
       - name: Compile Java Classes
         run: cd Projects/P2
 
-  testMethods:
-    # The type of runner that the job will run on
+  TestMapGetLoc:
     runs-on: ubuntu-latest
     container: openjdk:13
     steps:
-      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
-      # Runs a set of commands using the runners shell
       - name: Run tests
         run: cd Projects/P2
           gradlew test --parallel --tests TestMapGetLoc
+
+  TestPacManMove:
+    runs-on: ubuntu-latest
+    container: openjdk:13
+    steps:
+      - uses: actions/checkout@v2
+      - name: Run tests
+        run: cd Projects/P2
           gradlew test --parallel --tests TestPacManMove
+
+  TestGhostMove:
+    runs-on: ubuntu-latest
+    container: openjdk:13
+    steps:
+      - uses: actions/checkout@v2
+      - name: Run tests
+        run: cd Projects/P2
           gradlew test --parallel --tests TestGhostMove
