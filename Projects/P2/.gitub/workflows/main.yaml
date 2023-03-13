@@ -1,0 +1,41 @@
+name: CI
+
+# Controls when the workflow will run
+on: [push, pull_request, workflow_dispatch]
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    container: openjdk:13
+    steps:
+      - uses: actions/checkout@v2
+      - name: Compile Java Classes
+        run: cd Projects/P2
+
+  TestMapGetLoc:
+    runs-on: ubuntu-latest
+    container: openjdk:13
+    steps:
+      - uses: actions/checkout@v2
+      - name: Run tests
+        run: cd Projects/P2
+          gradlew test --parallel --tests TestMapGetLoc
+
+  TestPacManMove:
+    runs-on: ubuntu-latest
+    container: openjdk:13
+    steps:
+      - uses: actions/checkout@v2
+      - name: Run tests
+        run: cd Projects/P2
+          gradlew test --parallel --tests TestPacManMove
+
+  TestGhostMove:
+    runs-on: ubuntu-latest
+    container: openjdk:13
+    steps:
+      - uses: actions/checkout@v2
+      - name: Run tests
+        run: cd Projects/P2
+          gradlew test --parallel --tests TestGhostMove
