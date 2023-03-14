@@ -13,7 +13,8 @@ jobs:
       - name: Compile Java Classes
         run: 
           cd Projects/P2
-          gradlew build testClasses -x test
+          ./gradlew build testClasses -x test
+          
   TestGhostValidMoves:
       runs-on: ubuntu-latest
       container: openjdk:13
