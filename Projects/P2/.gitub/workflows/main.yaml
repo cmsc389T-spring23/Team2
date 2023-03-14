@@ -1,47 +1,74 @@
 name: CI
 
-# Controls when the workflow will run
 on: [push, pull_request, workflow_dispatch]
 
-# A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   build:
     runs-on: ubuntu-latest
     container: openjdk:13
     steps:
       - uses: actions/checkout@v2
-      - name: Compile Java Classes
-        run: 
+      - name: Compile Java Classes and build
+        run: |
           cd Projects/P2
           ./gradlew build testClasses -x test
 
-TestMapEatCookie:
-  runs-on: ubuntu-latest
-  container: openjdk:13
-  steps:
-    - uses: actions/checkout@v2
-    - name: Run tests
-      run:
-        cd Projects/P2
-        gradlew test --parallel --tests TestMapEatCookie
+  TestMapGetLoc:
+    runs-on: ubuntu-latest
+    container: openjdk:13
+    steps:
+      - uses: actions/checkout@v2
+      - name: Run tests
+        run: |
+          cd Projects/P2
+          ./gradlew test --parallel --tests TestMapGetLoc
 
-TestGhostAttack:
-  runs-on: ubuntu-latest
-  container: openjdk:13
-  steps:
-    - uses: actions/checkout@v2
-    - name: Run tests
-      run:
-        cd Projects/P2
-        gradlew test --parallel --tests TestGhostAttack
+  TestPacManMove:
+    runs-on: ubuntu-latest
+    container: openjdk:13
+    steps:
+      - uses: actions/checkout@v2
+      - name: Run tests
+        run: |
+          cd Projects/P2
+          ./gradlew test --parallel --tests TestPacManMove
 
-TestPacManConsume:
-  runs-on: ubuntu-latest
-  container: openjdk:13
-  steps:
-    - uses: actions/checkout@v2
-    - name: Run tests
-      run:
-        cd Projects/P2
-        gradlew test --parallel --tests TestPacManConsume
+  TestGhostMove:
+    runs-on: ubuntu-latest
+    container: openjdk:13
+    steps:
+      - uses: actions/checkout@v2
+      - name: Run tests
+        run: |
+          cd Projects/P2
+          ./gradlew test --parallel --tests TestGhostMove
 
+  TestMapEatCookie:
+    runs-on: ubuntu-latest
+    container: openjdk:13
+    steps:
+      - uses: actions/checkout@v2
+      - name: Run tests
+        run: |
+          cd Projects/P2
+          ./gradlew test --parallel --tests TestMapEatCookie
+
+  TestGhostAttack:
+    runs-on: ubuntu-latest
+    container: openjdk:13
+    steps:
+      - uses: actions/checkout@v2
+      - name: Run tests
+        run: |
+          cd Projects/P2
+          ./gradlew test --parallel --tests TestGhostAttack
+
+  TestPacManConsume:
+    runs-on: ubuntu-latest
+    container: openjdk:13
+    steps:
+      - uses: actions/checkout@v2
+      - name: Run tests
+        run: |
+          cd Projects/P2
+          ./gradlew test --parallel --tests TestPacManConsume
