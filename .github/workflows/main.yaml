@@ -13,7 +13,7 @@ jobs:
       - name: Compile Java Classes
         run: 
           cd Projects/P2
-  
+          gradlew build testClasses -x test
   TestGhostValidMoves:
       runs-on: ubuntu-latest
       container: openjdk:13
@@ -22,7 +22,7 @@ jobs:
         - name: Run tests
           run: 
             cd Projects/P2
-            gradlew test --parallel --tests TestGhostInRange
+            gradlew test --parallel --tests TestGhostValidMoves
 
   TestMapMove:
       runs-on: ubuntu-latest
@@ -32,8 +32,8 @@ jobs:
         - name: Run tests
           run: 
             cd Projects/P2
-            gradlew test --parallel --tests TestMapAttack
-
+            gradlew test --parallel --tests TestMapMove
+            
   TestPacManValidMoves:
       runs-on: ubuntu-latest
       container: openjdk:13
@@ -42,4 +42,4 @@ jobs:
         - name: Run tests
           run: 
             cd Projects/P2
-            gradlew test --parallel --tests TestPacManInRange
+            gradlew test --parallel --tests TestPacManValidMoves
