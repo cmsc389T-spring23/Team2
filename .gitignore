@@ -35,6 +35,5 @@ gradle-app.setting
 # Cache of project
 .gradletasknamecache
 
-
 .DS_Store
 **/.DS_Store
