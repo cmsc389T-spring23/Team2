@@ -65,21 +65,22 @@ public class Map {
   public boolean move(String name, Location loc, Type type) {
     // update locations, components, and field
     // use the setLocation method for the component to move it to the new location
-    if (field.get(loc).contains(Type.WALL)) {
-      return false;
-    }
-    // Get the comp and old location
-    JComponent comp = components.get(name);
-    Location oldLoc = locations.get(name);
+    return false;
+    // if (field.get(loc).contains(Type.WALL)) {
+    //   return false;
+    // }
+    // // Get the comp and old location
+    // JComponent comp = components.get(name);
+    // Location oldLoc = locations.get(name);
 
-    // Update locations, components, and the component's location
-    locations.put(name, loc);
-    comp.setLocation(loc.x, loc.y);
+    // // Update locations, components, and the component's location
+    // locations.put(name, loc);
+    // comp.setLocation(loc.x, loc.y);
 
-    // Update field
-    field.get(oldLoc).remove(type);
-    field.get(loc).add(type);
-    return true;
+    // // Update field
+    // field.get(oldLoc).remove(type);
+    // field.get(loc).add(type);
+    // return true;
   }
 
   // getLoc() returns a HashSet of the types at the given location.
