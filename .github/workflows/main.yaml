@@ -13,33 +13,34 @@ jobs:
       - name: Compile Java Classes
         run: 
           cd Projects/P2
-          gradlew build testClasses -x test
-  TestGhostValidMoves:
-      runs-on: ubuntu-latest
-      container: openjdk:13
-      steps:
-        - uses: actions/checkout@v2
-        - name: Run tests
-          run: 
-            cd Projects/P2
-            gradlew test --parallel --tests TestGhostValidMoves
+          ./gradlew build testClasses -x test
 
-  TestMapMove:
-      runs-on: ubuntu-latest
-      container: openjdk:13
-      steps:
-        - uses: actions/checkout@v2
-        - name: Run tests
-          run: 
-            cd Projects/P2
-            gradlew test --parallel --tests TestMapMove
-            
-  TestPacManValidMoves:
-      runs-on: ubuntu-latest
-      container: openjdk:13
-      steps:
-        - uses: actions/checkout@v2
-        - name: Run tests
-          run: 
-            cd Projects/P2
-            gradlew test --parallel --tests TestPacManValidMoves
+  TestMapEatCookie:
+    runs-on: ubuntu-latest
+    container: openjdk:13
+    steps:
+      - uses: actions/checkout@v2
+      - name: Run tests
+        run:
+          cd Projects/P2
+          gradlew test --parallel --tests TestMapEatCookie
+
+  TestGhostAttack:
+    runs-on: ubuntu-latest
+    container: openjdk:13
+    steps:
+      - uses: actions/checkout@v2
+      - name: Run tests
+        run:
+          cd Projects/P2
+          gradlew test --parallel --tests TestGhostAttack
+
+  TestPacManConsume:
+    runs-on: ubuntu-latest
+    container: openjdk:13
+    steps:
+      - uses: actions/checkout@v2
+      - name: Run tests
+        run:
+          cd Projects/P2
+          gradlew test --parallel --tests TestPacManConsume
