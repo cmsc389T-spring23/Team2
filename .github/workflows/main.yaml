@@ -18,3 +18,33 @@ jobs:
         run: 
           cd Projects/P2
           gradlew build testClasses -x test
+
+TestMapEatCookie:
+  runs-on: ubuntu-latest
+  container: openjdk:13
+  steps:
+    - uses: actions/checkout@v2
+    - name: Run tests
+      run:
+        cd Projects/P2
+        gradlew test --parallel --tests TestMapEatCookie
+
+TestGhostAttack:
+  runs-on: ubuntu-latest
+  container: openjdk:13
+  steps:
+    - uses: actions/checkout@v2
+    - name: Run tests
+      run:
+        cd Projects/P2
+        gradlew test --parallel --tests TestGhostAttack
+
+TestPacManConsume:
+  runs-on: ubuntu-latest
+  container: openjdk:13
+  steps:
+    - uses: actions/checkout@v2
+    - name: Run tests
+      run:
+        cd Projects/P2
+        gradlew test --parallel --tests TestPacManConsume
