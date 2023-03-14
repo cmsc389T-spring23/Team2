@@ -15,7 +15,7 @@ jobs:
           cd Projects/P2
           ./gradlew build testClasses -x test
   
-  TestGhostValidMoves:
+  TestGhostInRange:
       runs-on: ubuntu-latest
       container: openjdk:13
       steps:
@@ -25,7 +25,7 @@ jobs:
             cd Projects/P2
             gradlew test --parallel --tests TestGhostInRange
 
-  TestMapMove:
+  TestMapAttack:
       runs-on: ubuntu-latest
       container: openjdk:13
       steps:
@@ -35,7 +35,7 @@ jobs:
             cd Projects/P2
             gradlew test --parallel --tests TestMapAttack
 
-  TestPacManValidMoves:
+  TestPacManInRange:
       runs-on: ubuntu-latest
       container: openjdk:13
       steps:
