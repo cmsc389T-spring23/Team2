@@ -14,7 +14,37 @@ jobs:
         run: 
           cd Projects/P2
           ./gradlew build testClasses -x test
-          
+
+  TestGhostValidMoves:
+      runs-on: ubuntu-latest
+      container: openjdk:13
+      steps:
+        - uses: actions/checkout@v2
+        - name: Run tests
+          run: 
+            cd Projects/P2
+            gradlew test --parallel --tests TestGhostValidMoves
+
+  TestMapMove:
+      runs-on: ubuntu-latest
+      container: openjdk:13
+      steps:
+        - uses: actions/checkout@v2
+        - name: Run tests
+          run: 
+            cd Projects/P2
+            gradlew test --parallel --tests TestMapMove
+            
+  TestPacManValidMoves:
+      runs-on: ubuntu-latest
+      container: openjdk:13
+      steps:
+        - uses: actions/checkout@v2
+        - name: Run tests
+          run: 
+            cd Projects/P2
+            gradlew test --parallel --tests TestPacManValidMoves
+
   TestMapGetLoc:
     runs-on: ubuntu-latest
     container: openjdk:13
