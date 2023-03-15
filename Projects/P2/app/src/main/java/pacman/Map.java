@@ -116,9 +116,10 @@ public class Map {
 
   public JComponent eatCookie(String name) {
     Location loc = locations.get(name);
-    if(field.get(loc).contains(Type.COOKIE)){
-      String cookie_id = "tok_x" + loc.x + "_y" + loc.y;
+    if(!field.get(loc).contains(Type.COOKIE)){
+      String cookie_id = "tok_x" + loc.y + "_y" + loc.x;
       JComponent cookie_comp = components.get(cookie_id);
+      cookies++;
       locations.remove(cookie_id);
       components.remove(cookie_id);
       field.get(loc).remove(Type.COOKIE);
