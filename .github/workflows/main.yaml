@@ -23,7 +23,7 @@ jobs:
         - name: Run tests
           run: |
             cd Projects/P2
-            gradlew test --parallel --tests TestGhostValidMoves
+            ./gradlew test --parallel --tests TestGhostValidMoves
 
   TestMapMove:
       runs-on: ubuntu-latest
@@ -33,7 +33,7 @@ jobs:
         - name: Run tests
           run: |
             cd Projects/P2
-            gradlew test --parallel --tests TestMapMove
+            ./gradlew test --parallel --tests TestMapMove
             
   TestPacManValidMoves:
       runs-on: ubuntu-latest
@@ -43,7 +43,7 @@ jobs:
         - name: Run tests
           run: |
             cd Projects/P2
-            gradlew test --parallel --tests TestPacManValidMoves
+            ./gradlew test --parallel --tests TestPacManValidMoves
 
   TestMapGetLoc:
     runs-on: ubuntu-latest
@@ -83,7 +83,7 @@ jobs:
         - name: Run tests
           run: |
             cd Projects/P2
-            gradlew test --parallel --tests TestGhostInRange
+            ./gradlew test --parallel --tests TestGhostInRange
 
   TestMapAttack:
       runs-on: ubuntu-latest
@@ -93,7 +93,7 @@ jobs:
         - name: Run tests
           run: |
             cd Projects/P2
-            gradlew test --parallel --tests TestMapAttack
+            ./gradlew test --parallel --tests TestMapAttack
 
   TestPacManInRange:
       runs-on: ubuntu-latest
@@ -103,7 +103,7 @@ jobs:
         - name: Run tests
           run: |
             cd Projects/P2
-            gradlew test --parallel --tests TestPacManInRange
+            ./gradlew test --parallel --tests TestPacManInRange
 
   TestMapEatCookie:
     runs-on: ubuntu-latest
@@ -113,7 +113,7 @@ jobs:
       - name: Run tests
         run: |
           cd Projects/P2
-          gradlew test --parallel --tests TestMapEatCookie
+          ./gradlew test --parallel --tests TestMapEatCookie
 
   TestGhostAttack:
     runs-on: ubuntu-latest
@@ -123,7 +123,7 @@ jobs:
       - name: Run tests
         run: |
           cd Projects/P2
-          gradlew test --parallel --tests TestGhostAttack
+          ./gradlew test --parallel --tests TestGhostAttack
 
   TestPacManConsume:
     runs-on: ubuntu-latest
@@ -133,5 +133,5 @@ jobs:
       - name: Run tests
         run: |
           cd Projects/P2
-          gradlew test --parallel --tests TestPacManConsume
+          ./gradlew test --parallel --tests TestPacManConsume
 
