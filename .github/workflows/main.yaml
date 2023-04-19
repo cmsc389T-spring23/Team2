@@ -11,7 +11,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Compile Java Classes
-        run: 
+        run: |
           cd Projects/P2
           ./gradlew build testClasses -x test
 
@@ -21,7 +21,7 @@ jobs:
       steps:
         - uses: actions/checkout@v2
         - name: Run tests
-          run: 
+          run: |
             cd Projects/P2
             gradlew test --parallel --tests TestGhostValidMoves
 
@@ -31,7 +31,7 @@ jobs:
       steps:
         - uses: actions/checkout@v2
         - name: Run tests
-          run: 
+          run: |
             cd Projects/P2
             gradlew test --parallel --tests TestMapMove
             
@@ -41,7 +41,7 @@ jobs:
       steps:
         - uses: actions/checkout@v2
         - name: Run tests
-          run: 
+          run: |
             cd Projects/P2
             gradlew test --parallel --tests TestPacManValidMoves
 
@@ -81,7 +81,7 @@ jobs:
       steps:
         - uses: actions/checkout@v2
         - name: Run tests
-          run: 
+          run: |
             cd Projects/P2
             gradlew test --parallel --tests TestGhostInRange
 
@@ -91,7 +91,7 @@ jobs:
       steps:
         - uses: actions/checkout@v2
         - name: Run tests
-          run: 
+          run: |
             cd Projects/P2
             gradlew test --parallel --tests TestMapAttack
 
@@ -101,7 +101,7 @@ jobs:
       steps:
         - uses: actions/checkout@v2
         - name: Run tests
-          run: 
+          run: |
             cd Projects/P2
             gradlew test --parallel --tests TestPacManInRange
 
@@ -111,7 +111,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Run tests
-        run:
+        run: |
           cd Projects/P2
           gradlew test --parallel --tests TestMapEatCookie
 
@@ -121,7 +121,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Run tests
-        run:
+        run: |
           cd Projects/P2
           gradlew test --parallel --tests TestGhostAttack
 
@@ -131,7 +131,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Run tests
-        run:
+        run: |
           cd Projects/P2
           gradlew test --parallel --tests TestPacManConsume
 
